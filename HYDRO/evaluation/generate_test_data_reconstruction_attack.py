@@ -6,7 +6,7 @@ def process_data(args, tensor_queue, done_value):
 
     from HYDRO.model.networks import Generator, DiffusionGenerator
     from HYDRO.model.arcface import iresnet100
-    from HYDRO.model.tracker import TrackerTorchV3 as TrackerTorch
+    from HYDRO.model.tracker import TrackerTorch
     from HYDRO.model.threedmm import Encoder3DMM
     from HYDRO.data.dataset import GenerateEvalDataset
     from HYDRO.model.simplified_dpm_solver import SingleStepDPMSolverScheduler

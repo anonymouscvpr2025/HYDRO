@@ -1,10 +1,11 @@
+# Taken and modified from https://github.com/sicxu/Deep3DFaceRecon_pytorch
+
 import torch
 import torch.nn as nn
 
 import os
 
 from HYDRO.model.resnet import conv1x1, resnet18, resnet50, filter_state_dict
-
 
 func_dict = {
     'resnet18': (resnet18, 512),

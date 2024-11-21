@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from HYDRO.model.simplified_dpm_solver import SingleStepDPMSolverScheduler
-from HYDRO.model.tracker import TrackerTorchV3
+from HYDRO.model.tracker import TrackerTorch
 from HYDRO.model.arcface import iresnet100
 from HYDRO.model.networks import Generator, DiffusionGenerator
 from HYDRO.config.config import diffusion_plus_addition_skips_attention_mlp, baseline_plus_addition_skips_attention
@@ -38,7 +38,7 @@ class HYDRO(nn.Module):
         self.diffusion.eval()
 
         self.tracker_enabled = tracker_enabled
-        self.tracker = TrackerTorchV3(max_size=tracker_max_size,
+        self.tracker = TrackerTorch(max_size=tracker_max_size,
                                       threshold=tracker_threshold,
                                       margin=tracker_margin,
                                       track=tracker_track,

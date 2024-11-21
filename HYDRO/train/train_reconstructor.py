@@ -18,7 +18,7 @@ from datetime import datetime
 
 from HYDRO.model.arcface import iresnet100_sparse_perceptual
 from HYDRO.model.networks import Generator, DiffusionGenerator
-from HYDRO.model.tracker import TunableTrackerTorch
+from HYDRO.model.tracker import TrackerTorch
 from diffusers import DPMSolverMultistepScheduler
 from HYDRO.data.dataset import DeIDDataset
 from torch.utils.data import DataLoader
@@ -134,7 +134,7 @@ def train(args):
     diffusion.load_state_dict(torch.load(args.diffusion_path)["generator"])
     diffusion.eval()
 
-    itm = TunableTrackerTorch()
+    itm = TrackerTorch(track=False)
 
     reconstructor = Generator(**cfg_rec)
 
@@ -264,7 +264,7 @@ def train(args):
 
                 margin = torch.rand(B, 1, device=args.device) * 0.3 if args.random_margin else None
 
-                itm_condition = itm.forward_tune(t_condition, margin)
+                itm_condition = itm(t_condition, margin)
 
                 t_norm = torch.nn.functional.normalize(t_condition, dim=1)
                 itm_norm = torch.nn.functional.normalize(itm_condition, dim=1)

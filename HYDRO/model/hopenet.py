@@ -1,7 +1,7 @@
 import torch.nn as nn
 import math
 
-
+# From https://github.com/natanielruiz/deep-head-pose
 class Hopenet(nn.Module):
     # Hopenet with 3 output layers for yaw, pitch and roll
     # Predicts Euler angles by binning and regression with the expected value

@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
+# From https://github.com/protossw512/AdaptiveWingLoss
 class AddCoordsTh(nn.Module):
     def __init__(self, x_dim=64, y_dim=64, with_r=False, with_boundary=False):
         super(AddCoordsTh, self).__init__()

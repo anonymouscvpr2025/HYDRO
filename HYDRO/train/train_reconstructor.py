@@ -332,7 +332,7 @@ def train(args):
 
             r_condition, _ = arcface(id_transform(reconstruction))
 
-            # Drive identity away in high level layers...
+            # identity loss
             r_norm = torch.nn.functional.normalize(r_condition, dim=1)
 
             loss_identity = 1 - torch.sum(t_norm * r_norm, dim=1)

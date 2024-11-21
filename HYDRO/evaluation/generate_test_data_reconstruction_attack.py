@@ -87,8 +87,7 @@ def process_data(args, tensor_queue, done_value):
     idx_tensor = idx_tensor.to(args.device, dtype=weight_dtype)
     softmax = torch.nn.Softmax(dim=1)
 
-    face_tracker = TrackerTorch(anchor_path='all_avg_id.npy',
-                                track=args.track, threshold=args.threshold, margin=args.margin)
+    face_tracker = TrackerTorch(track=args.track, threshold=args.threshold, margin=args.margin)
     face_tracker.to(args.device)
 
     arcface.to(args.device, dtype=weight_dtype)
